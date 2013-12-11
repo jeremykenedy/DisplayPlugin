@@ -21,6 +21,6 @@
             </feature>
         </config-file>
 
-        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/DisplayPlugin.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />      
+        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/Display.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />      
      </platform>          
 </plugin>
