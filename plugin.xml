@@ -17,7 +17,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Display">
-                <param name="android-package" value="pl.edu.uj.tcs.student.tomaszwesolowski"/>
+                <param name="android-package" value="pl.edu.uj.tcs.student.tomaszwesolowski.Display"/>
             </feature>
         </config-file>
 
