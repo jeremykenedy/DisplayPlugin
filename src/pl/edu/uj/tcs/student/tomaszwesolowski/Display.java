@@ -30,7 +30,6 @@ public class Display extends CordovaPlugin {
 							e.printStackTrace();
 						}
 						cordova.getActivity().getWindow().setAttributes(layout);
-						callbackContext.success();
 					}
 				});
 
@@ -49,7 +48,6 @@ public class Display extends CordovaPlugin {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						callbackContext.success();
 					}
 				});
 
