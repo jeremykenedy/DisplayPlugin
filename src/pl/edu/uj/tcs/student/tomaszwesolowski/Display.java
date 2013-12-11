@@ -14,14 +14,25 @@ public class Display extends CordovaPlugin {
     public static final String SET_BRIGHTNESS = "setBrightness";
     
     @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
         try {
             if (SET_BRIGHTNESS.equals(action)) { 
-                JSONObject arg_object = args.getJSONObject(0);
+                final JSONObject arg_object = args.getJSONObject(0);
                 
-                WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
-                layout.screenBrightness = arg_object.getInt("brightness");
-                cordova.getActivity().getWindow().setAttributes(layout);
+                cordova.getActivity().runOnUiThread(new Runnable() {
+                    public void run() {
+                        // Main Code goes here
+                    	WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
+                        try {
+							layout.screenBrightness = arg_object.getInt("brightness");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                        cordova.getActivity().getWindow().setAttributes(layout);
+                        callbackContext.success(); 
+                    }
+                });
                 
                callbackContext.success();
                return true; 
