@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.view.WindowManager;
 
 public class Display extends CordovaPlugin {
     public static final String SET_BRIGHTNESS = "setBrightness";
@@ -18,21 +19,10 @@ public class Display extends CordovaPlugin {
             if (SET_BRIGHTNESS.equals(action)) { 
                 JSONObject arg_object = args.getJSONObject(0);
                 
-                new AlertDialog.Builder(cordova.getActivity())
-                .setTitle("Delete entry")
-                .setMessage(arg_object.getString("brightness"))
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) { 
-                        // continue with delete
-                    }
-                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) { 
-                        // do nothing
-                    }
-                 })
-                 .show();
-             
+                WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
+                layout.screenBrightness = arg_object.getInt("brightness");
+                cordova.getActivity().getWindow().setAttributes(layout);
+                
                callbackContext.success();
                return true; 
             }
