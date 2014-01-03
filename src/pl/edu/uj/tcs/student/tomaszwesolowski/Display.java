@@ -33,7 +33,6 @@ public class Display extends CordovaPlugin {
 
 	}
 	
-	
 	class Layer extends View
 	{
 		  private int a;
@@ -64,10 +63,10 @@ public class Display extends CordovaPlugin {
 	public static final String SET_ORIENTATION = "setOrientation";
 	public static final String SET_RED = "setRed";
 	
-	public Layer view = new Layer(cordova.getActivity());
-	public Layer redView = new Layer(cordova.getActivity());
-	public Layer blueView = new Layer(cordova.getActivity());
-	public Layer greenView = new Layer(cordova.getActivity());
+	public Layer view;
+	public Layer redView;
+	public Layer blueView;
+	public Layer greenView;
 	
 	private int red = 0;
 	private int green = 0;
@@ -149,6 +148,11 @@ public class Display extends CordovaPlugin {
 	
 	public void setColorsViews() {
 		if(!colorsFirstTime) {
+			view = new Layer(cordova.getActivity());
+			redView = new Layer(cordova.getActivity());
+			greenView = new Layer(cordova.getActivity());
+			blueView = new Layer(cordova.getActivity());
+			
 			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
 			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
 			localWindowManager.addView(view, layoutParams);
