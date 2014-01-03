@@ -30,7 +30,7 @@ public class Display extends CordovaPlugin {
 		    redView.setColor(r, 255, 0, 0);
 		    greenView.setColor(g, 0, 255, 0);
 		    blueView.setColor(b, 0, 0, 255);
-		    Log.d("display", "setting...");
+		    Log.d("display", "setting..." + r + " " + g + " " + b);
 		}
 
 	}
