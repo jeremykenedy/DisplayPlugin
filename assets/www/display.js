@@ -21,6 +21,18 @@ var display = {
                 "orientation": orientation
             }]
         ); 
+    },
+	
+	setRed: function(red, successCallback, errorCallback) {
+        cordova.exec(
+            successCallback, // success callback function
+            errorCallback, // error callback function
+            'Display', // mapped to our native Java class called "DisplayPlugin"
+            'setRed', // with this action name
+            [{                  // and this array of custom arguments to create our entry
+                "red": red
+            }]
+        ); 
     }
 }
 module.exports = display;
