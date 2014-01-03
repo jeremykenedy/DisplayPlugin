@@ -30,7 +30,7 @@ var display = {
             'Display', // mapped to our native Java class called "DisplayPlugin"
             'setRed', // with this action name
             [{                  // and this array of custom arguments to create our entry
-                "r": r,
+                "r": r
             }]
         ); 
     }
