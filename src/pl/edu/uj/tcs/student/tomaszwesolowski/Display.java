@@ -62,6 +62,7 @@ public class Display extends CordovaPlugin {
 		     this.setMeasuredDimension(parentWidth/2, parentHeight);
 		     this.setLayoutParams(new ViewGroup.LayoutParams(parentWidth/2,parentHeight));
 		     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		     Log.d("display", "filling...");
 		  }
 		
 		  public void setColor(int a, int r, int g, int b){
