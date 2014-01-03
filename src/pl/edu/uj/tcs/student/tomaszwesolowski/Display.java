@@ -45,7 +45,8 @@ public class Display extends CordovaPlugin {
 		  public Layer(Context context){
 		    super(context);
 		  }
-		
+		  
+		  @Override
 		  protected void onDraw(Canvas canvas){
 		    super.onDraw(canvas);
 		    canvas.drawARGB(this.a, this.r, this.g, this.b);
