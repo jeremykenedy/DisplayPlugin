@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -29,6 +30,7 @@ public class Display extends CordovaPlugin {
 		    redView.setColor(r, 255, 0, 0);
 		    greenView.setColor(g, 0, 255, 0);
 		    blueView.setColor(b, 0, 0, 255);
+		    Log.d("display", "setting...");
 		}
 
 	}
