@@ -57,7 +57,10 @@ public class Display extends CordovaPlugin {
 		    this.g = g;
 		    this.b = b;
 		    invalidate();
-		  }
+		    WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
+		    WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
+		    localWindowManager.updateViewLayout(this, layout);
+		   }
 	}
 	
 	
