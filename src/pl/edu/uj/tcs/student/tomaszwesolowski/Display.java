@@ -6,13 +6,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.pm.ActivityInfo;
 import android.view.WindowManager;
 
 public class Display extends CordovaPlugin {
 	public static final String SET_BRIGHTNESS = "setBrightness";
 	public static final String SET_ORIENTATION = "setOrientation";
-	//public static final String SET_ORIENTATION = "setOrientation";
+	public static final String SET_RED = "setRed";
+	
+	public Layer view = new Layer(cordova.getActivity());
+	public Layer redView = new Layer(cordova.getActivity());
+	public Layer blueView = new Layer(cordova.getActivity());
+	public Layer greenView = new Layer(cordova.getActivity());
+	
+	private int red = 0;
+	private int green = 0;
+	private int blue = 0;
+	
+	boolean colorsFirstTime = false;
 
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -55,15 +65,17 @@ public class Display extends CordovaPlugin {
 				callbackContext.success();
 				return true;
 			}
-			else if (SET_BRIGHTNESS.equals(action)) {
+			else if (SET_RED.equals(action)) {
 				final JSONObject arg_object = args.getJSONObject(0);
-
+				
 				cordova.getActivity().runOnUiThread(new Runnable() {
 					public void run() {
-						// Main Code goes here
+						setColorsViews();
+
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
-							layout.screenBrightness = (float) arg_object.getDouble("brightness");
+							red = arg_object.getInt("r");
+							ScreenAdjuster.setColor(redView, greenView, blueView, red, green, blue) ;
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -81,6 +93,18 @@ public class Display extends CordovaPlugin {
 			System.err.println("Exception: " + e.getMessage());
 			callbackContext.error(e.getMessage());
 			return false;
+		}
+	}
+	
+	public void setColorsViews() {
+		if(!colorsFirstTime) {
+			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
+			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
+			localWindowManager.addView(view, layoutParams);
+			localWindowManager.addView(greenView, layoutParams);
+			localWindowManager.addView(redView, layoutParams);
+			localWindowManager.addView(blueView, layoutParams);
+			colorsFirstTime = true;
 		}
 	}
 }

@@ -58,4 +58,10 @@ var app = {
 			var error = function(message) { alert("Oopsie! " + message); };
 			display.setOrientation(val, success, error);
 	}
+	,
+	setRed: function(val) {
+			var success = function() { };
+			var error = function(message) { alert("Oopsie! " + message); };
+			display.setRed(val, success, error);
+	}
 };
