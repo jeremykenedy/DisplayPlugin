@@ -150,10 +150,10 @@ public class Display extends CordovaPlugin {
 	
 	public void setColorsViews() {
 		if(!colorsFirstTime) {
-			view = new Layer(cordova.getActivity());
-			redView = new Layer(cordova.getActivity());
-			greenView = new Layer(cordova.getActivity());
-			blueView = new Layer(cordova.getActivity());
+			view = new Layer(cordova.getActivity().getApplicationContext());
+			redView = new Layer(cordova.getActivity().getApplicationContext());
+			greenView = new Layer(cordova.getActivity().getApplicationContext());
+			blueView = new Layer(cordova.getActivity().getApplicationContext());
 			
 			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
 			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
