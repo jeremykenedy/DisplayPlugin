@@ -10,6 +10,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 
 public class Display extends CordovaPlugin {
@@ -51,6 +52,16 @@ public class Display extends CordovaPlugin {
 		    super.onDraw(canvas);
 		    canvas.drawARGB(this.a, this.r, this.g, this.b);
 		    Log.d("display", "rendering..");
+		    this.bringToFront();
+		  }
+		  
+		  @Override 
+		  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+		     int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+		     int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+		     this.setMeasuredDimension(parentWidth/2, parentHeight);
+		     this.setLayoutParams(new ViewGroup.LayoutParams(parentWidth/2,parentHeight));
+		     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		  }
 		
 		  public void setColor(int a, int r, int g, int b){
