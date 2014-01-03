@@ -1,1 +1,0 @@
-{"prepare_queue":{"installed":[],"uninstalled":[]},"config_munge":{"res/xml/config.xml":{"/*":{"<feature name=\"Display\"><param name=\"android-package\" value=\"pl.edu.uj.tcs.student.tomaszwesolowski.Display\" /></feature>":1}}},"installed_plugins":{"pl.edu.uj.tcs.student.tomaszwesolowski":{"PACKAGE_NAME":"com.phonegap.helloworld"}},"dependent_plugins":{}}
