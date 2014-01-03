@@ -19,16 +19,7 @@
             <feature name="Display">
                 <param name="android-package" value="pl.edu.uj.tcs.student.tomaszwesolowski.Display"/>
             </feature>
-            <feature name="Layer">
-                <param name="android-package" value="pl.edu.uj.tcs.student.tomaszwesolowski.Layer"/>
-            </feature>
-            <feature name="ScreenAdjuster">
-                <param name="android-package" value="pl.edu.uj.tcs.student.tomaszwesolowski.ScreenAdjuster"/>
-            </feature>
         </config-file>
-
-        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/Display.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />   
-        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/Layer.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />      
-        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/ScreenAdjuster.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />         
+        <source-file src="src/pl/edu/uj/tcs/student/tomaszwesolowski/Display.java" target-dir="src/pl/edu/uj/tcs/student/tomaszwesolowski/display" />    
      </platform>          
 </plugin>

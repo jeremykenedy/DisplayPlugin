@@ -6,9 +6,60 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.view.View;
 import android.view.WindowManager;
 
 public class Display extends CordovaPlugin {
+	
+	static class ScreenAdjuster {
+
+		public static void setAlpha(Layer view, int alpha){
+		    //Handle all conditions
+		       view.setColor(alpha, 0, 0, 0);
+		}
+		public static void setContrast(Layer view, int contrast){
+		    //Handle all conditions
+		    view.setColor(contrast, 100, 100, 100);
+		}
+		
+		public static void setColor(Layer redView, Layer greenView, Layer blueView, int r, int g, int b){
+		    //Handle all conditions
+		    redView.setColor(r, 255, 0, 0);
+		    greenView.setColor(g, 0, 255, 0);
+		    blueView.setColor(b, 0, 0, 255);
+		}
+
+	}
+	
+	
+	class Layer extends View
+	{
+		  private int a;
+		  private int b;
+		  private int g;
+		  private int r;
+		
+		  public Layer(Context context){
+		    super(context);
+		  }
+		
+		  protected void onDraw(Canvas canvas){
+		    super.onDraw(canvas);
+		    canvas.drawARGB(this.a, this.r, this.g, this.b);
+		  }
+		
+		  public void setColor(int a, int r, int g, int b){
+		    this.a = a;
+		    this.r = r;
+		    this.g = g;
+		    this.b = b;
+		    invalidate();
+		  }
+	}
+	
+	
 	public static final String SET_BRIGHTNESS = "setBrightness";
 	public static final String SET_ORIENTATION = "setOrientation";
 	public static final String SET_RED = "setRed";
