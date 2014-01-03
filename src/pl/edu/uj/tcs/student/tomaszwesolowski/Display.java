@@ -49,6 +49,7 @@ public class Display extends CordovaPlugin {
 		  protected void onDraw(Canvas canvas){
 		    super.onDraw(canvas);
 		    canvas.drawARGB(this.a, this.r, this.g, this.b);
+		    Log.d("display", "rendering..");
 		  }
 		
 		  public void setColor(int a, int r, int g, int b){
