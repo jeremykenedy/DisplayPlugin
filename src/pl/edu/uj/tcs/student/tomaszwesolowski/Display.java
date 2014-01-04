@@ -172,10 +172,10 @@ public class Display extends CordovaPlugin {
 			
 			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
 			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
-			localWindowManager.addView(view, layoutParams);
-			localWindowManager.addView(greenView, layoutParams);
-			localWindowManager.addView(redView, layoutParams);
-			localWindowManager.addView(blueView, layoutParams);
+			localWindowManager.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+			localWindowManager.addView(greenView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+			localWindowManager.addView(redView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+			localWindowManager.addView(blueView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 			colorsFirstTime = true;
 			 Log.d("display", "views added");
 		}
