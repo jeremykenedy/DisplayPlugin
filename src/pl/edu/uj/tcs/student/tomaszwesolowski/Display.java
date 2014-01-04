@@ -38,10 +38,10 @@ public class Display extends CordovaPlugin {
 	
 	class Layer extends View
 	{
-		  private int a;
-		  private int b;
-		  private int g;
-		  private int r;
+		  private int a = 40;
+		  private int b = 50;
+		  private int g = 30;
+		  private int r = 190;
 		
 		  public Layer(Context context){
 		    super(context);
@@ -143,7 +143,6 @@ public class Display extends CordovaPlugin {
 							green = arg_object.getInt("green");
 							blue = arg_object.getInt("blue");
 							ScreenAdjuster.setColor(redView, greenView, blueView, red, green, blue) ;
-							cordova.getActivity().setContentView(redView);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -170,7 +169,6 @@ public class Display extends CordovaPlugin {
 			redView = new Layer(cordova.getActivity());
 			greenView = new Layer(cordova.getActivity());
 			blueView = new Layer(cordova.getActivity());
-			
 			
 			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
 			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
