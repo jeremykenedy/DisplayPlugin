@@ -140,8 +140,8 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							red = arg_object.getInt("red");
-							red = arg_object.getInt("green");
-							red = arg_object.getInt("blue");
+							green = arg_object.getInt("green");
+							blue = arg_object.getInt("blue");
 							ScreenAdjuster.setColor(redView, greenView, blueView, red, green, blue) ;
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
