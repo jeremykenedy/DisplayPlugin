@@ -59,7 +59,7 @@ public class Display extends CordovaPlugin {
 		     int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
 		     int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
 		     this.setMeasuredDimension(parentWidth/2, parentHeight);
-		     this.setLayoutParams(new ViewGroup.LayoutParams(100,100));
+		     this.setLayoutParams(new ViewGroup.LayoutParams(parentWidth/2,parentHeight));
 		     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		     Log.d("display", "filling...");
 		  }
@@ -76,7 +76,7 @@ public class Display extends CordovaPlugin {
 	
 	public static final String SET_BRIGHTNESS = "setBrightness";
 	public static final String SET_ORIENTATION = "setOrientation";
-	public static final String SET_RED = "setRed";
+	public static final String SET_COLORS = "setColors";
 	
 	public Layer view;
 	public Layer redView;
@@ -130,7 +130,7 @@ public class Display extends CordovaPlugin {
 				callbackContext.success();
 				return true;
 			}
-			else if (SET_RED.equals(action)) {
+			else if (SET_COLORS.equals(action)) {
 				final JSONObject arg_object = args.getJSONObject(0);
 				
 				cordova.getActivity().runOnUiThread(new Runnable() {
@@ -140,6 +140,8 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							red = arg_object.getInt("red");
+							red = arg_object.getInt("green");
+							red = arg_object.getInt("blue");
 							ScreenAdjuster.setColor(redView, greenView, blueView, red, green, blue) ;
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block

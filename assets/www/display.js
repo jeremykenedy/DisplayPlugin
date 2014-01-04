@@ -23,14 +23,16 @@ var display = {
         ); 
     },
 	
-	setRed: function(red, successCallback, errorCallback) {
+	setColors: function(red, green, blue, successCallback, errorCallback) {
         cordova.exec(
             successCallback, // success callback function
             errorCallback, // error callback function
             'Display', // mapped to our native Java class called "DisplayPlugin"
-            'setRed', // with this action name
+            'setColors', // with this action name
             [{                  // and this array of custom arguments to create our entry
-                "red": red
+                "red": red,
+				"green": green,
+				"blue": blue
             }]
         ); 
     }
