@@ -52,7 +52,6 @@ public class Display extends CordovaPlugin {
 		    super.onDraw(canvas);
 		    canvas.drawARGB(this.a, this.r, this.g, this.b);
 		    Log.d("display", "rendering..");
-		    this.bringToFront();
 		  }
 		  
 		  @Override 
@@ -60,7 +59,7 @@ public class Display extends CordovaPlugin {
 		     int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
 		     int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
 		     this.setMeasuredDimension(parentWidth/2, parentHeight);
-		     this.setLayoutParams(new ViewGroup.LayoutParams(parentWidth/2,parentHeight));
+		     this.setLayoutParams(new ViewGroup.LayoutParams(100,100));
 		     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		     Log.d("display", "filling...");
 		  }
