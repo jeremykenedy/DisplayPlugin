@@ -8,9 +8,9 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.PixelFormat;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 
 public class Display extends CordovaPlugin {
@@ -54,15 +54,19 @@ public class Display extends CordovaPlugin {
 		    Log.d("display", "rendering..");
 		  }
 		  
-		  @Override 
-		  protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
-		     int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
-		     int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
-		     this.setMeasuredDimension(parentWidth/2, parentHeight);
-		     this.setLayoutParams(new ViewGroup.LayoutParams(parentWidth/2,parentHeight));
-		     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		     Log.d("display", "filling...");
-		  }
+		  @Override
+		    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		        int parentWidth = MeasureSpec.getSize(widthMeasureSpec);
+		        int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
+		        this.setMeasuredDimension(parentWidth / 2, parentHeight);
+		        //Since you are attatching it to the window use window layout params.
+		        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams(parentWidth / 2,
+		                parentHeight);
+		        this.setLayoutParams(layoutParams);
+
+		        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+		        Log.d("display", "filling...");
+		    }
 		
 		  public void setColor(int a, int r, int g, int b){
 		    this.a = a;
@@ -164,20 +168,24 @@ public class Display extends CordovaPlugin {
 	}
 	
 	public void setColorsViews() {
-		if(!colorsFirstTime) {
-			view = new Layer(cordova.getActivity());
-			redView = new Layer(cordova.getActivity());
-			greenView = new Layer(cordova.getActivity());
-			blueView = new Layer(cordova.getActivity());
-			
-			WindowManager localWindowManager = (WindowManager)cordova.getActivity().getSystemService("window");
-			WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
-			localWindowManager.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-			localWindowManager.addView(greenView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-			localWindowManager.addView(redView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-			localWindowManager.addView(blueView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-			colorsFirstTime = true;
-			 Log.d("display", "views added");
-		}
+	    if (!colorsFirstTime) {
+	        view = new Layer(cordova.getActivity());
+	        redView = new Layer(cordova.getActivity());
+	        greenView = new Layer(cordova.getActivity());
+	        blueView = new Layer(cordova.getActivity());
+
+	        WindowManager localWindowManager = (WindowManager) cordova.getActivity()
+	                .getSystemService("window");
+	        WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow()
+	                .getAttributes();
+	        layoutParams.format = PixelFormat.TRANSLUCENT;
+
+	        localWindowManager.addView(view, layoutParams);
+	        localWindowManager.addView(greenView, layoutParams);
+	        localWindowManager.addView(redView, layoutParams);
+	        localWindowManager.addView(blueView, layoutParams);
+	        colorsFirstTime = true;
+	        Log.d("display", "views added");
+	    }
 	}
 }
