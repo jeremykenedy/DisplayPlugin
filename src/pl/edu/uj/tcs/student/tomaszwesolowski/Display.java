@@ -186,10 +186,10 @@ public class Display extends CordovaPlugin {
 	        layoutParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_FOCUSABLE;
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
-	        localWindowManager.addView(view, layoutParams);
+	        //localWindowManager.addView(view, layoutParams);
 	        localWindowManager.addView(greenView, layoutParams);
-	        localWindowManager.addView(redView, layoutParams);
-	        localWindowManager.addView(blueView, layoutParams);
+	        //localWindowManager.addView(redView, layoutParams);
+	        //localWindowManager.addView(blueView, layoutParams);
 	        colorsFirstTime = true;
 	        Log.d("display", "views added");
 	    }
