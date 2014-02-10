@@ -187,8 +187,8 @@ public class Display extends CordovaPlugin {
 
 	        //localWindowManager.addView(view, layoutParams);
 	        localWindowManager.addView(greenView, layoutParams);
-	        //localWindowManager.addView(redView, layoutParams);
-	        //localWindowManager.addView(blueView, layoutParams);
+	        localWindowManager.addView(redView, layoutParams);
+	        localWindowManager.addView(blueView, layoutParams);
 	        colorsFirstTime = true;
 	        Log.d("display", "views added");
 	    }
