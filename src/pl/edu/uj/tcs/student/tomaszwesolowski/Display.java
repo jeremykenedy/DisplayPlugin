@@ -183,7 +183,7 @@ public class Display extends CordovaPlugin {
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
 	        layoutParams.type=LayoutParams.TYPE_PRIORITY_PHONE;
-	        layoutParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_FOCUSABLE;
+	        layoutParams.flags=LayoutParams.FLAG_NOT_FOCUSABLE;
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
 	        //localWindowManager.addView(view, layoutParams);
