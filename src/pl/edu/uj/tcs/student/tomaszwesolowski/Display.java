@@ -182,7 +182,7 @@ public class Display extends CordovaPlugin {
 	                .getAttributes();
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
-	        layoutParams.type=LayoutParams.TTYPE_SYSTEM_ALERT;
+	        layoutParams.type=LayoutParams.TYPE_SYSTEM_ALERT;
 	        layoutParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_FOCUSABLE;
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
