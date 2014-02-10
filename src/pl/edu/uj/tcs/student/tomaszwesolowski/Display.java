@@ -181,7 +181,7 @@ public class Display extends CordovaPlugin {
 	                .getAttributes();
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
-	        layoutParams.type=LayoutParams.TYPE_SYSTEM_OVERLAY;
+	        layoutParams.type=LayoutParams.TYPE_SYSTEM_ALERT;
 	        layoutParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_FOCUSABLE | LayoutParams.FLAG_NOT_TOUCHABLE;
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
@@ -189,6 +189,7 @@ public class Display extends CordovaPlugin {
 	        localWindowManager.addView(greenView, layoutParams);
 	        localWindowManager.addView(redView, layoutParams);
 	        localWindowManager.addView(blueView, layoutParams);
+
 	        colorsFirstTime = true;
 	        Log.d("display", "views added");
 	    }
