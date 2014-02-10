@@ -138,7 +138,7 @@ public class Display extends CordovaPlugin {
 			}
 			else if (SET_COLORS.equals(action)) {
 				final JSONObject arg_object = args.getJSONObject(0);
-				
+				setColorsViews();
 				cordova.getActivity().runOnUiThread(new Runnable() {
 					public void run() {
 						setColorsViews();
@@ -153,7 +153,7 @@ public class Display extends CordovaPlugin {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						cordova.getActivity().getWindow().setAttributes(layout);
+						//cordova.getActivity().getWindow().setAttributes(layout);
 					}
 				});
 
@@ -183,7 +183,7 @@ public class Display extends CordovaPlugin {
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
 	        layoutParams.type=LayoutParams.TYPE_PRIORITY_PHONE;
-	        layoutParams.flags=LayoutParams.FLAG_NOT_FOCUSABLE;
+	        layoutParams.flags=LayoutParams.FLAG_NOT_TOUCH_MODAL | LayoutParams.FLAG_NOT_FOCUSABLE;
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
 	        //localWindowManager.addView(view, layoutParams);
