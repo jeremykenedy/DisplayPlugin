@@ -170,8 +170,7 @@ public class Display extends CordovaPlugin {
 	        colourView = new Layer(cordova.getActivity());
 	        
 	        WindowManager localWindowManager = (WindowManager) cordova.getActivity().getWindowManager();
-	        WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow()
-	                .getAttributes();
+	        LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
 	        layoutParams.type=LayoutParams.TYPE_SYSTEM_ALERT;
@@ -180,7 +179,7 @@ public class Display extends CordovaPlugin {
 
 	        //localWindowManager.addView(view, layoutParams);
 	        //localWindowManager.addView(colourView, layoutParams);
-	        cordova.getActivity().addContentView(colourView, layoutParams);
+	        cordova.getActivity().getWindow().addContentView(colourView, layoutParams);
 	        
 	        //cordova.getActivity().getWindow().setAttributes(layoutParams);
 
