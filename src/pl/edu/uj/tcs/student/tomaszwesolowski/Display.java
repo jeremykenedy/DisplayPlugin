@@ -101,12 +101,12 @@ public class Display extends CordovaPlugin {
 					public void run() {
 						// Main Code goes here
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
-						/*try {
+						try {
 							layout.screenBrightness = (float) arg_object.getDouble("brightness");
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}*/
+						}
 						cordova.getActivity().getWindow().setAttributes(layout);
 					}
 				});
