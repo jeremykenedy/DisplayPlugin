@@ -28,11 +28,9 @@ public class Display extends CordovaPlugin {
 		    view.setColor(contrast, 100, 100, 100);
 		}
 		
-		public static void setColor(Layer redView, Layer greenView, Layer blueView, int r, int g, int b){
+		public static void setColor(Layer colourView, int r, int g, int b){
 		    //Handle all conditions
-		    redView.setColor(r, 255, 0, 0);
-		    greenView.setColor(g, 0, 255, 0);
-		    blueView.setColor(b, 0, 0, 255);
+			colourView.setColor(100, r, g, b);
 		    Log.d("display", "setting..." + r + " " + g + " " + b);
 		}
 
@@ -85,9 +83,7 @@ public class Display extends CordovaPlugin {
 	public static final String SET_COLORS = "setColors";
 	
 	public Layer view;
-	public Layer redView;
-	public Layer blueView;
-	public Layer greenView;
+	public Layer colourView;
 	
 	private int red = 0;
 	private int green = 0;
@@ -147,7 +143,7 @@ public class Display extends CordovaPlugin {
 							red = arg_object.getInt("red");
 							green = arg_object.getInt("green");
 							blue = arg_object.getInt("blue");
-							ScreenAdjuster.setColor(redView, greenView, blueView, red, green, blue) ;
+							ScreenAdjuster.setColor(colourView, red, green, blue) ;
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -171,10 +167,8 @@ public class Display extends CordovaPlugin {
 	public void setColorsViews() {
 	    if (!colorsFirstTime) {
 	        view = new Layer(cordova.getActivity());
-	        redView = new Layer(cordova.getActivity());
-	        greenView = new Layer(cordova.getActivity());
-	        blueView = new Layer(cordova.getActivity());
-
+	        colourView = new Layer(cordova.getActivity());
+	        
 	        WindowManager localWindowManager = (WindowManager) cordova.getActivity()
 	                .getSystemService("window");
 	        WindowManager.LayoutParams layoutParams = cordova.getActivity().getWindow()
@@ -186,9 +180,7 @@ public class Display extends CordovaPlugin {
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
 	        //localWindowManager.addView(view, layoutParams);
-	        localWindowManager.addView(greenView, layoutParams);
-	        localWindowManager.addView(redView, layoutParams);
-	        localWindowManager.addView(blueView, layoutParams);
+	        localWindowManager.addView(colourView, layoutParams);
 
 	        colorsFirstTime = true;
 	        Log.d("display", "views added");
