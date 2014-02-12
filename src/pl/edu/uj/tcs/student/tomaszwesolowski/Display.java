@@ -179,7 +179,8 @@ public class Display extends CordovaPlugin {
 	        layoutParams.gravity=Gravity.LEFT|Gravity.TOP; 
 
 	        //localWindowManager.addView(view, layoutParams);
-	        localWindowManager.addView(colourView, layoutParams);
+	        //localWindowManager.addView(colourView, layoutParams);
+	        cordova.getActivity().addContentView(colourView, layoutParams);
 	        
 	        //cordova.getActivity().getWindow().setAttributes(layoutParams);
 
