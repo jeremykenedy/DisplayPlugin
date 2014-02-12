@@ -148,7 +148,7 @@ public class Display extends CordovaPlugin {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						//cordova.getActivity().getWindow().setAttributes(layout);
+						//
 					}
 				});
 
@@ -181,6 +181,8 @@ public class Display extends CordovaPlugin {
 
 	        //localWindowManager.addView(view, layoutParams);
 	        localWindowManager.addView(colourView, layoutParams);
+	        
+	        cordova.getActivity().getWindow().setAttributes(layoutParams);
 
 	        colorsFirstTime = true;
 	        Log.d("display", "views added");
