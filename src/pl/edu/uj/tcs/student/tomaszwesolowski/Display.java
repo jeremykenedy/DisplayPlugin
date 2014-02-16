@@ -38,10 +38,10 @@ public class Display extends CordovaPlugin {
 	
 	class Layer extends View
 	{
-		  private int a = 40;
-		  private int b = 50;
-		  private int g = 30;
-		  private int r = 190;
+		  private int a = 0;
+		  private int b = 0;
+		  private int g = 0;
+		  private int r = 0;
 		
 		  public Layer(Context context){
 		    super(context);
@@ -170,7 +170,7 @@ public class Display extends CordovaPlugin {
 	        colourView = new Layer(cordova.getActivity());
 	        
 	        WindowManager localWindowManager = (WindowManager) cordova.getActivity().getWindowManager();
-	        LayoutParams layoutParams = cordova.getActivity().getWindow().getAttributes();
+	        LayoutParams layoutParams = new LayoutParams();
 	        layoutParams.format = PixelFormat.TRANSLUCENT;
 	        
 	        layoutParams.type=LayoutParams.TYPE_SYSTEM_ALERT;
