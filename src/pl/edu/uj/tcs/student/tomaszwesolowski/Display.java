@@ -182,7 +182,7 @@ public class Display extends CordovaPlugin {
 	        	localWindowManager.addView(colourView, layoutParams);
 	        }
 	        catch(Exception e) {
-	        	localWindowManager.removeView(colourView);
+	        	localWindowManager.removeViewImmediate(colourView);
 	        }
 	        
 	        //cordova.getActivity().getWindow().setAttributes(layoutParams);
