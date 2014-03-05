@@ -84,8 +84,8 @@ public class Display extends CordovaPlugin {
 	public static final String SET_ALPHA = "setAlpha";
 	public static final String SET_DIM = "setDim";
 	
-	public Layer view;
-	public Layer colourView;
+	public Layer view = null;
+	public Layer colourView = null;
 	
 	private int red = 0;
 	private int green = 0;
@@ -186,6 +186,7 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							layout.dimAmount = (float) arg_object.getDouble("dim");
+							Log.d("display", "dim " + layout.dimAmount);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -209,6 +210,7 @@ public class Display extends CordovaPlugin {
 	@Override
 	public void onPause(boolean multitasking) {
 		super.onPause(multitasking);
+		if(colourView == null) return;
 		WindowManager localWindowManager = (WindowManager) cordova.getActivity().getWindowManager();
 		localWindowManager.removeView(colourView);
 		colorsFirstTime = false;
