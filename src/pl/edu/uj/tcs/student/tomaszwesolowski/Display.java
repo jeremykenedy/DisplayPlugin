@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -185,8 +186,8 @@ public class Display extends CordovaPlugin {
 						// Main Code goes here
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
-							layout.dimAmount = (float) arg_object.getDouble("dim");
-							cordova.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+							//layout.dimAmount = (float) arg_object.getDouble("dim");
+							cordova.getActivity().getWindow().setBackgroundDrawable(new ColorDrawable(0x7f000000));
 							Log.d("display", "dim " + layout.dimAmount);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
