@@ -189,7 +189,7 @@ public class Display extends CordovaPlugin {
 							//layout.dimAmount = (float) arg_object.getDouble("dim");
 							cordova.getActivity().getWindow().setBackgroundDrawable(new ColorDrawable(0x7f000000));
 							Log.d("display", "dim " + layout.dimAmount);
-						} catch (JSONException e) {
+						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
