@@ -37,7 +37,7 @@ var display = {
         ); 
     },
 	
-	setAlpha: function(red, green, blue, successCallback, errorCallback) {
+	setAlpha: function(alpha, successCallback, errorCallback) {
         cordova.exec(
             successCallback, // success callback function
             errorCallback, // error callback function
