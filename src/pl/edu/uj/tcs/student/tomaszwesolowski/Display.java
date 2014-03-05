@@ -82,6 +82,7 @@ public class Display extends CordovaPlugin {
 	public static final String SET_ORIENTATION = "setOrientation";
 	public static final String SET_COLORS = "setColors";
 	public static final String SET_ALPHA = "setAlpha";
+	public static final String SET_DIM = "setDim";
 	
 	public Layer view;
 	public Layer colourView;
@@ -165,6 +166,26 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							layout.alpha = (float) arg_object.getDouble("alpha");
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						cordova.getActivity().getWindow().setAttributes(layout);
+					}
+				});
+
+				callbackContext.success();
+				return true;
+			}
+			else if (SET_DIM.equals(action)) {
+				final JSONObject arg_object = args.getJSONObject(0);
+
+				cordova.getActivity().runOnUiThread(new Runnable() {
+					public void run() {
+						// Main Code goes here
+						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
+						try {
+							layout.dimAmount = (float) arg_object.getDouble("dim");
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();

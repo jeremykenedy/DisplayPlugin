@@ -47,6 +47,18 @@ var display = {
                 "alpha": alpha
             }]
         ); 
+    },
+	
+	setDim: function(dim, successCallback, errorCallback) {
+        cordova.exec(
+            successCallback, // success callback function
+            errorCallback, // error callback function
+            'Display', // mapped to our native Java class called "DisplayPlugin"
+            'setDim', // with this action name
+            [{                  // and this array of custom arguments to create our entry
+                "dim": dim
+            }]
+        ); 
     }
 }
 
