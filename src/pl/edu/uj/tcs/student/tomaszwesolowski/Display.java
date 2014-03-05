@@ -186,6 +186,7 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							layout.dimAmount = (float) arg_object.getDouble("dim");
+							cordova.getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
 							Log.d("display", "dim " + layout.dimAmount);
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
