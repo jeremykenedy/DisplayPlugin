@@ -228,6 +228,7 @@ public class Display extends CordovaPlugin {
 
 				cordova.getActivity().runOnUiThread(new Runnable() {
 					public void run() {
+						setColorsViews();
 						// Main Code goes here
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
