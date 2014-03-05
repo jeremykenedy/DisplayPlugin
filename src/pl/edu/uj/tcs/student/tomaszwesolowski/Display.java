@@ -7,9 +7,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.ColorDrawable;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -78,12 +83,52 @@ public class Display extends CordovaPlugin {
 		   }
 	}
 	
+	class BlurBuilder {
+	    private static final float BITMAP_SCALE = 0.4f;
+	    private static final float BLUR_RADIUS = 7.5f;
+
+	    public Bitmap blur(View v) {
+	        return blur(v.getContext(), getScreenshot(v));
+	    }
+
+	    public Bitmap blur(Context ctx, Bitmap image) {
+	    	/*
+	        int width = Math.round(image.getWidth() * BITMAP_SCALE);
+	        int height = Math.round(image.getHeight() * BITMAP_SCALE);
+
+	        Bitmap inputBitmap = Bitmap.createScaledBitmap(image, width, height, false);
+	        Bitmap outputBitmap = Bitmap.createBitmap(inputBitmap);
+
+	        RenderScript rs = RenderScript.create(ctx);
+	        ScriptIntrinsicBlur theIntrinsic = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
+	        Allocation tmpIn = Allocation.createFromBitmap(rs, inputBitmap);
+	        Allocation tmpOut = Allocation.createFromBitmap(rs, outputBitmap);
+	        theIntrinsic.setRadius(BLUR_RADIUS);
+	        theIntrinsic.setInput(tmpIn);
+	        theIntrinsic.forEach(tmpOut);
+	        tmpOut.copyTo(outputBitmap);
+
+	        return outputBitmap;
+	        */
+	    	return null;
+	    }
+
+	    private Bitmap getScreenshot(View v) {
+	        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+	        Canvas c = new Canvas(b);
+	        v.draw(c);
+	        return b;
+	    }
+	}
+	
 	
 	public static final String SET_BRIGHTNESS = "setBrightness";
 	public static final String SET_ORIENTATION = "setOrientation";
 	public static final String SET_COLORS = "setColors";
 	public static final String SET_ALPHA = "setAlpha";
 	public static final String SET_DIM = "setDim";
+	
+	public BlurBuilder blurBuilder = new BlurBuilder();
 	
 	public Layer view = null;
 	public Layer colourView = null;
@@ -187,8 +232,7 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							//layout.dimAmount = (float) arg_object.getDouble("dim");
-							cordova.getActivity().getWindow().setBackgroundDrawable(new ColorDrawable(0x7f000000));
-							Log.d("display", "dim " + layout.dimAmount);
+							colourView.setBackgroundDrawable(new ColorDrawable(0x7f000000));
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
