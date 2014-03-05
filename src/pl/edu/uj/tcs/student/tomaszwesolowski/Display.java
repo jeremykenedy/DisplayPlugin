@@ -164,6 +164,18 @@ public class Display extends CordovaPlugin {
 		}
 	}
 	
+	@Override
+	public void onPause(boolean multitasking) {
+		super.onPause(multitasking);
+		WindowManager localWindowManager = (WindowManager) cordova.getActivity().getWindowManager();
+		localWindowManager.removeView(colourView);
+	}
+	
+	@Override
+	public void onResume(boolean multitasking) {
+		setColorsViews();
+	}
+	
 	public void setColorsViews() {
 	    if (!colorsFirstTime) {
 	        view = new Layer(cordova.getActivity());
