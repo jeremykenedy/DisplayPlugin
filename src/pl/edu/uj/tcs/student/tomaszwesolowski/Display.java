@@ -175,6 +175,7 @@ public class Display extends CordovaPlugin {
 	@Override
 	public void onResume(boolean multitasking) {
 		setColorsViews();
+		ScreenAdjuster.setColor(colourView, red, green, blue) ;
 	}
 	
 	public void setColorsViews() {
