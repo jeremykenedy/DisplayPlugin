@@ -232,7 +232,8 @@ public class Display extends CordovaPlugin {
 						WindowManager.LayoutParams layout = cordova.getActivity().getWindow().getAttributes();
 						try {
 							//layout.dimAmount = (float) arg_object.getDouble("dim");
-							colourView.setBackgroundDrawable(new ColorDrawable(0x7f000000));
+							colourView.setBackgroundColor(0x7f000000);
+							
 						} catch (Exception e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
